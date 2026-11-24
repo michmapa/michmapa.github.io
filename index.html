@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Madre Mapa | Resume</title>
+    <!-- Two fonts: a blocky pixel font for titles, and a readable retro font for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============ BACKGROUND SCENERY (sits behind everything) ============ -->
+    <div class="scenery">
+        <!-- JavaScript draws pixel art into anything with data-art -->
+        <div class="star" data-art="star" style="top: 6%;  left: 4%;"></div>
+        <div class="star" data-art="star" style="top: 12%; left: 8%;  animation-delay: 0.6s;"></div>
+        <div class="star" data-art="star" style="top: 8%;  left: 88%; animation-delay: 1.2s;"></div>
+        <div class="star" data-art="star" style="top: 30%; left: 70%; animation-delay: 0.3s;"></div>
+
+        <div class="cloud" data-art="cloud" style="top: 22%; left: 2%;"></div>
+        <div class="cloud extra" data-art="cloud" style="top: 48%; left: 14%; animation-delay: -6s;"></div>
+        <div class="cloud extra" data-art="cloud" style="top: 52%; left: 74%; animation-delay: -12s;"></div>
+
+        <!-- City skyline: each div is one building -->
+        <div class="skyline">
+            <div class="building" style="height: 240px; width: 110px;"></div>
+            <div class="building roof" style="height: 150px; width: 80px;"></div>
+            <div class="building" style="height: 100px; width: 60px;"></div>
+            <div class="gap"></div>
+            <div class="building" style="height: 90px;  width: 60px;"></div>
+            <div class="building" style="height: 180px; width: 80px;"></div>
+            <div class="building roof" style="height: 280px; width: 110px;"></div>
+        </div>
+        <div class="ground"></div>
+    </div>
+
+    <!-- ===================== SCREEN 1: TITLE SCREEN ===================== -->
+    <section id="start-screen" class="screen">
+        <p class="kicker">CURRICULUM VITAE</p>
+        <h1>MICHAEL<br>MADRE MAPA</h1>
+        <p class="subtitle">CUSTOMER ENGINEER<br>APPLIED MATERIALS SOUTH EAST ASIA</p>
+
+        <button class="start-btn" onclick="startGame()">
+            <span class="blink">&gt;&gt;&gt;</span>
+            PRESS START
+            <span class="blink">&lt;&lt;&lt;</span>
+        </button>
+        <p class="tip">or press ENTER</p>
+
+        <div class="contact">
+            <a href="https://www.linkedin.com/in/michael-madre-mapa-677958167" target="_blank">LinkedIn</a>
+            <a href="mailto:michaelmapa05@outlook.com">michaelmapa05@outlook.com</a>
+        </div>
+    </section>
+
+    <!-- ===================== SCREEN 2: MENU + CONTENT ===================== -->
+    <section id="menu-screen" class="screen hidden">
+
+        <div class="top-bar">
+            <button class="back-btn" onclick="backToTitle()">&lt; TITLE</button>
+            <p class="kicker">MICHAEL MADRE MAPA</p>
+        </div>
+
+        <div class="game-layout">
+
+            <!-- Left: the menu -->
+            <nav id="menu">
+                <button class="menu-item active" onclick="showSection('about', this)"><span class="arrows">&gt;&gt;&gt;</span> ABOUT</button>
+                <button class="menu-item" onclick="showSection('experience', this)"><span class="arrows">&gt;&gt;&gt;</span> EXPERIENCE</button>
+                <button class="menu-item" onclick="showSection('projects', this)"><span class="arrows">&gt;&gt;&gt;</span> PROJECTS</button>
+                <button class="menu-item" onclick="showSection('education', this)"><span class="arrows">&gt;&gt;&gt;</span> EDUCATION</button>
+                <button class="menu-item" onclick="showSection('skills', this)"><span class="arrows">&gt;&gt;&gt;</span> SKILLS</button>
+                <button class="menu-item" onclick="showSection('leadership', this)"><span class="arrows">&gt;&gt;&gt;</span> LEADERSHIP</button>
+                <button class="menu-item" onclick="showSection('interests', this)"><span class="arrows">&gt;&gt;&gt;</span> INTERESTS</button>
+                <p class="tip">Use the &uarr; &darr; keys or click</p>
+            </nav>
+
+            <!-- Right: the content box -->
+            <div class="panel-box">
+
+                <!-- ---------- ABOUT ---------- -->
+                <article id="about" class="panel">
+                    <p class="label">PLAYER PROFILE</p>
+                    <h2>ABOUT</h2>
+
+                    <div class="profile-card">
+                        <img class="avatar" src="image/me.jpg" alt="Michael Madre Mapa">
+
+                        <table class="stats">
+                            <tr><th>NAME</th>      <td>Michael Madre Mapa</td></tr>
+                            <tr><th>CLASS</th>     <td>Customer Engineer</td></tr>
+                            <tr><th>GUILD</th>     <td>Applied Materials South East Asia</td></tr>
+                            <tr><th>TRAINING</th>  <td>Chemical &amp; Biomolecular Engineering, NTU</td></tr>
+                            <tr><th>HOME BASE</th> <td>Singapore</td></tr>
+                        </table>
+                    </div>
+
+                    <h3>BACKSTORY</h3>
+                    <p>
+                        Hi, I'm Michael! I'm a Chemical Engineer who found his way into semiconductors,
+                        working with the tools that help make the chips inside everyday electronics.
+                        I enjoy figuring out why something isn't working and fixing it, whether it's a
+                        process tool or a drink recipe behind the bar.
+                    </p>
+                    <p>
+                        Gaming has been a big part of my life for as long as I can remember, which is why
+                        this site looks like one. Outside work, you'll usually find me gaming, travelling,
+                        hiking, or playing or watching football. I like building things too: PCs, LEGO sets,
+                        and now this website, which I coded as my first programming project.
+                    </p>
+
+                    <h3>SPECIAL ABILITIES</h3>
+                    <div class="tags">
+                        <span>Troubleshooting</span>
+                        <span>Metrology &amp; data analysis</span>
+                        <span>Dealing with customers</span>
+                        <span>Staying calm on 12-hour shifts</span>
+                        <span>Mixing Perfect Ratio Cocktails</span>
+                    </div>
+
+                    <h3>MAIN QUEST</h3>
+                    <p>
+                        Visit every country in the world!
+                    </p>
+
+                    <h3>CURRENT QUEST</h3>
+                    <p>
+                        Levelling up my coding skills, one project at a time.
+                    </p>
+
+                    <a class="pixel-btn" href="resume.pdf" download>DOWNLOAD FORMAL RESUME (PDF)</a>
+                </article>
+
+                <!-- ---------- EXPERIENCE ---------- -->
+                <article id="experience" class="panel hidden">
+                    <p class="label">QUEST LOG</p>
+                    <h2>EXPERIENCE</h2>
+                    <p class="hint">Click a quest to expand it.</p>
+
+                    <details class="card" open>
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Process Engineer Intern</span>
+                                <span class="org">Applied Materials</span>
+                            </span>
+                            <span class="date">Jan 2026 – Aug 2026</span>
+                        </summary>
+                        <ul>
+                            <li>Owned metrology for a chamber qualification project for a major customer: pre- and post-scanned wafers on the SP3 to calculate particle adders, and measured film thickness by ellipsometry (SFX) and sheet resistance (RS3000) against customer specifications.</li>
+                            <li>Supported a two-week marathon run of about 100 wafers a day, tracking particle adders throughout to confirm the chamber stayed stable before release to the customer.</li>
+                            <li>Ran Physical Vapour Deposition (PVD) on the Endura to customer specifications, and measured film thickness, film stress (FSM) and particle counts.</li>
+                            <li>Tested and validated a new SFX thickness recipe for a newly deposited non-metal film.</li>
+                            <li>Created an onboarding guide for incoming interns that let the next batch run basic metrology and daily tasks with minimal guidance from senior engineers, including during my three-week absence.</li>
+                            <li>Supported senior process engineers in process development of new materials for integrated voltage regulator (IVR) and screen-related products.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Bar and Service Crew (Part-time)</span>
+                                <span class="org">Little Farms</span>
+                            </span>
+                            <span class="date">Nov 2023 – June 2026</span>
+                        </summary>
+                        <ul>
+                            <li>Worked 12-hour shifts, moving from barista in the morning to bartender in the evening.</li>
+                            <li>Supported the floor team during busy periods by serving food and attending to guests, while keeping drink quality consistent.</li>
+                            <li>Managed food preparation and restock beverages and food items as needed according to SOP.</li>
+                            <li>Interacted with customers to understand their needs, provided excellent service and assisted Restaurant Manager in any adhoc duties.</li>
+                            <li>Trained staff members on the new monthly drink recipes and ensured consistent preparation and presentation.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Event Tour Manager (Part-time)</span>
+                                <span class="org">Global Travels</span>
+                            </span>
+                            <span class="date">2022 – Present</span>
+                        </summary>
+                        <ul>
+                            <li>Travel overseas to deliver incentive events for Prudential's top producers in countries including Germany, England and China, supporting event execution and on-site guest service.</li>
+                            <li>Support Event's Team with any administrative tasks and duties.</li>
+                            <li>Assist guest with any issues or concerns regarding hotel or transportation to the event space.</li>
+                            <li>Serve as bus in-charge: keep every guest accounted for and manage crowds during transfers and activities.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Assistant Chemist Intern</span>
+                                <span class="org">Element Construction Testing Pte Ltd</span>
+                            </span>
+                            <span class="date">Sep 2020 – Feb 2021</span>
+                        </summary>
+                        <ul>
+                            <li>Tested asphalt, concrete, sand and metal samples to ASTM International specifications to verify material quality and performance.</li>
+                            <li>Developed test procedures for a new cement sample, adapting polytechnic lab methods to deliver results quickly.</li>
+                            <li>Operated gas chromatography (GC), high-performance liquid chromatography (HPLC) and spark optical emission spectroscopy (OES).</li>
+                            <li>Prepared test reports and presented findings to my lab supervisor, and assisted in the preparation of test reports for clients.</li>
+                            <li>Supported in laboratory audits and ensured compliance with safety protocols.</li>
+                        </ul>
+                    </details>
+                </article>
+
+                <!-- ---------- PROJECTS ---------- -->
+                <article id="projects" class="panel hidden">
+                    <p class="label">MISSIONS</p>
+                    <h2>PROJECTS</h2>
+                    <p class="hint">Click a mission to expand it.</p>
+
+                    <details class="card" open>
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Final Year Design Project: Biofuel Production Plant</span>
+                                <span class="org">CH4801, NTU</span>
+                            </span>
+                            <span class="date">Oct 2026 – Apr 2027</span>
+                        </summary>
+                        <ul>
+                            <li>TBA</li>
+                        </ul>
+                    </details>
+
+                    <details class="card" open>
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Design Project: Production of Isopropyl Alcohol (IPA)</span>
+                                <span class="org">CH4801, NTU</span>
+                            </span>
+                            <span class="date">Aug 2026 – Oct 2026</span>
+                        </summary>
+                        <ul>
+                            <li>Designed and simulated an isopropyl alcohol production plant in Aspen HYSYS, meeting safety, operability and sustainability heuristics while maximising yield.</li>
+                            <li>Resolved a compressor outlet temperature above the heuristic limit by designing cascading compressors with intercoolers, and integrated a recycle loop to raise overall yield.</li>
+                            <li>Designed the distillation column, reconciling the minimum reflux ratio, operating reflux ratio and number of stages by tracing back through each calculation to correct a design error.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Micron Case Study: Dry Etch Yield Loss</span>
+                                <span class="org">NTU Advanced Semiconductor Processes</span>
+                            </span>
+                            <span class="date">Sep 2026 – Oct 2026</span>
+                        </summary>
+                        <ul>
+                            <li>Investigated a dry etch failure causing over-etch and under-etch and high yield loss, and proposed actions to reduce it, applying front-end process, metrology and testing knowledge.</li>
+                            <li>Presented the team's findings and recommendations to a Micron supervisor.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Final-Year Design Project: Styrene Plant</span>
+                                <span class="org">Ngee Ann Polytechnic</span>
+                            </span>
+                            <span class="date">Apr 2020 – Aug 2020</span>
+                        </summary>
+                        <ul>
+                            <li>Led the Aspen HYSYS design and modelling of a plant producing styrene from ethylbenzene, achieving over 99% purity and over 90% yield.</li>
+                            <li>Produced process flow and piping and instrumentation diagrams in AutoCAD, and assessed the design's safety, sustainability and cost.</li>
+                        </ul>
+                    </details>
+                </article>
+
+                <!-- ---------- EDUCATION ---------- -->
+                <article id="education" class="panel hidden">
+                    <p class="label">TRAINING GROUNDS</p>
+                    <h2>EDUCATION</h2>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <span class="role">Nanyang Technological University, Singapore</span>
+                            <span class="date">Aug 2023 – May 2027</span>
+                        </div>
+                        <p class="org">Bachelor of Engineering (Chemical and Biomolecular Engineering)</p>
+                        <p>
+                            <strong>Relevant coursework:</strong> 
+                        <li>
+                            Advanced Semiconductor Processes (CB4248):
+                            An industry elective taught by Micron, covering front-end processes, metrology,
+                            real-time defect analysis, and parametric and probe testing.
+                        </li>
+                        <li>
+                            Project Management for Engineers (CH4102):
+                            An elective which aims to equip engineering students with key project management concepts
+                            such as project integration, scope, project planning, budget management and project risks
+                            and opportunities.
+                        </li>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <span class="role">Ngee Ann Polytechnic, Singapore</span>
+                            <span class="date">Apr 2018 – May 2021</span>
+                        </div>
+                        <p class="org">Diploma in Chemical and Biomolecular Engineering</p>
+                        <p><strong>GPA:</strong> 3.91 / 4.0</p>
+                    </div>
+                </article>
+
+                <!-- ---------- SKILLS ---------- -->
+                <article id="skills" class="panel hidden">
+                    <p class="label">STATS &amp; ABILITIES</p>
+                    <h2>SKILLS</h2>
+
+                    <h3>Semiconductor Equipment</h3>
+                    <div class="tags">
+                        <span>Endura PVD</span>
+                    </div>
+
+                    <h3>Metrology</h3>
+                    <div class="tags">
+                        <span>KLA-SP2</span>
+                        <span>KLA-SFX2000</span>
+                        <span>FSM-128L</span>
+                        <span>KLA-Rs300</span>
+                    </div>
+
+                    <h3>Lab</h3>
+                    <div class="tags">
+                        <span>GC</span>
+                        <span>HPLC</span>
+                        <span>Spark OES</span>
+                        <span>ASTM Materials Testing</span>
+                    </div>
+
+                    <h3>Software</h3>
+                    <div class="tags">
+                        <span>Aspen HYSYS</span>
+                        <span>AutoCAD</span>
+                        <span>Microsoft Office</span>
+                        <span>Microsoft Excel</span>
+                        <span>MATLAB (basic)</span>
+                        <span>Python (basic)</span>
+                    </div>
+
+                    <h3>Other</h3>
+                    <div class="tags">
+                        <span>SOPs &amp; risk assessment</span>
+                        <span>Scientific report writing</span>
+                    </div>
+
+                    <h3>Languages</h3>
+                    <!-- JavaScript reads data-level and fills that many of the 10 blocks -->
+                    <div class="stat"><span>English</span><div class="bar" data-level="10"></div></div>
+                    <div class="stat"><span>Filipino</span><div class="bar" data-level="10"></div></div>
+                    <div class="stat"><span>Chinese</span><div class="bar" data-level="5"></div></div>
+                </article>
+
+                <!-- ---------- LEADERSHIP ---------- -->
+                <article id="leadership" class="panel hidden">
+                    <p class="label">GUILD ROLES</p>
+                    <h2>LEADERSHIP</h2>
+                    <p class="hint">Click a role to expand it.</p>
+
+                    <details class="card" open>
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Head Programmer, Executive Committee</span>
+                                <span class="org">Hall 13 Dinner and Dance, NTU</span>
+                            </span>
+                            <span class="date">2023 – 2025</span>
+                        </summary>
+                        <ul>
+                            <li>Co-led planning of the hall's Dinner and Dance as one of two main event planners, designing the event flow and selecting the venue.</li>
+                            <li>Managed the event's administration and communications, making sure every participant and guest knew the venue details and was catered for.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">CCEB Ambassador</span>
+                                <span class="org">NTU</span>
+                            </span>
+                            <span class="date">Sep 2024 – Present</span>
+                        </summary>
+                        <ul>
+                            <li>Advised 300+ prospective JC and polytechnic students on admission to NTU's Chemistry, Chemical Engineering and Biotechnology courses at Open House and tea sessions.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">President</span>
+                                <span class="org">LSCT Operatives, Ngee Ann Polytechnic</span>
+                            </span>
+                            <span class="date">Jun 2019 – May 2021</span>
+                        </summary>
+                        <ul>
+                            <li>Led 50 student members to plan and run LSCT Red Camp and the School of Life Sciences Open House, welcoming 300+ secondary school students and 200+ parent groups.</li>
+                            <li>Handled issues on the day, looked after the wellbeing of visitors and team members, and trained 4 members into leadership roles.</li>
+                        </ul>
+                    </details>
+
+                    <details class="card">
+                        <summary>
+                            <span class="card-head">
+                                <span class="role">Youth Expedition to Vietnam</span>
+                                <span class="org">Volunteer</span>
+                            </span>
+                            <span class="date">Jun 2019</span>
+                        </summary>
+                        <ul>
+                            <li>Built shelters and taught English, mathematics and science to students in need, and raised funds in Singapore through handmade bake sales.</li>
+                        </ul>
+                    </details>
+                </article>
+
+                <!-- ---------- INTERESTS ---------- -->
+                <article id="interests" class="panel hidden">
+                    <p class="label">SIDE QUESTS</p>
+                    <h2>INTERESTS</h2>
+                    <div class="tags big">
+                        <span>Travel</span>
+                        <span>Frisbee</span>
+                        <span>Football</span>
+                        <span>Hiking</span>
+                        <span>Coffee</span>
+                        <span>Mixology</span>
+                        <span>Cooking</span>
+                        <span>Wine</span>
+                        <span>Building PCs</span>
+                        <span>LEGO</span>
+                        <span>Strategy &amp; puzzle games</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
